@@ -8,22 +8,21 @@ function App() {
     const [profile, setProfile] = useState([]);
     const googleClientId =
         "530667180284-s4ufreb4e2v0lnn8i1qv19ibl9tmav7f.apps.googleusercontent.com";
-    const twitterKey = "IBYwfIeyKxm62y7Q615UjJuZI";
-    const twitterSecret = "0XSyfas8mR1fd9EvGbvbKxqHpK7nfhMFTV7VbQ0RD3elqhqM8y";
 
-    // useEffect(() => {
-    //     const initClient = () => {
-    //         gapi.client.init({
-    //             clientId: clientId,
-    //             scope: "",
-    //         });
-    //     };
-    //     gapi.load("client:auth2", initClient);
-    // });
+    useEffect(() => {
+        const initClient = () => {
+            gapi.client.init({
+                clientId: clientId,
+                scope: "",
+            });
+        };
+        gapi.load("client:auth2", initClient);
+    });
 
     const onSuccess = (res) => {
         setProfile(res.profileObj);
         console.log("Success " + res.profileObj);
+        console.log(res);
     };
 
     const onFailure = (err) => {
